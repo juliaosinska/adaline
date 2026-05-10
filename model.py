@@ -1,6 +1,7 @@
 import numpy as np
 
 class Adaline:
+    # 0.01 learning rate by default
     def __init__(self, n_features, lr=1e-2):
         self.w = np.zeros(n_features)
         self.b = 0
@@ -18,7 +19,8 @@ class Adaline:
             output = self.activation(X)
             error = y - output
 
-            N= X.shape[0]
+            N = X.shape[0]
+            # how much each pixel contributes to the error
             self.w += self.lr * np.dot(X.T, error) / N
             self.b += self.lr * error.sum() / N
 
